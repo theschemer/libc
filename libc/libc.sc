@@ -42,8 +42,6 @@
     c-random
     c-realloc
     c-realpath
-    c-seed
-    c-setkey
     c-setstate
     c-srand
     c-srand48
@@ -77,30 +75,7 @@
     c-sqrt
     c-tan
     c-tanh
-    c-erf
-    c-erfc
-    c-gamma
-    c-hypot
-    c-j0
-    c-j1
-    c-jn
-    c-lgamma
-    c-y0
-    c-y1
-    c-yn
     c-isnan
-    c-acosh
-    c-asinh
-    c-atanh
-    c-cbrt
-    c-expm1
-    c-ilogb
-    c-log1p
-    c-logb
-    c-nextafter
-    c-remainder
-    c-rint
-    c-scalb
     c-clearerr
     c-ctermid
     c-cuserid
@@ -210,7 +185,7 @@
        (define name
           (if (foreign-entry? sym)
             (foreign-procedure sym args ret)
-            (printf "~a: not-find-in-~a\n" sym lib-name))))))
+            (lambda x (printf "error: ~a not found in ~a\n" sym lib-name)))))))
 
   (define-ftype div_t
     (struct
@@ -390,14 +365,6 @@
   (def-function c-realpath
               "realpath" (string string) string)
 
-  ;;unsigned c_seed(unsigned )
-  (def-function c-seed
-              "seed" (int) int)
-
-  ;;void c_setkey(char* )
-  (def-function c-setkey
-              "setkey" (string) void)
-
   ;;char* c_setstate(char* )
   (def-function c-setstate
               "setstate" (string) string)
@@ -530,101 +497,9 @@
   (def-function c-tanh
               "tanh" (double) double)
 
-  ;;double c_erf(double )
-  (def-function c-erf
-              "erf" (double) double)
-
-  ;;double c_erfc(double )
-  (def-function c-erfc
-              "erfc" (double) double)
-
-  ;;double c_gamma(double )
-  (def-function c-gamma
-              "gamma" (double) double)
-
-  ;;double c_hypot(double  ,double )
-  (def-function c-hypot
-              "hypot" (double double) double)
-
-  ;;double c_j0(double )
-  (def-function c-j0
-              "j0" (double) double)
-
-  ;;double c_j1(double )
-  (def-function c-j1
-              "j1" (double) double)
-
-  ;;double c_jn(int  ,double )
-  (def-function c-jn
-              "jn" (int double) double)
-
-  ;;double c_lgamma(double )
-  (def-function c-lgamma
-              "lgamma" (double) double)
-
-  ;;double c_y0(double )
-  (def-function c-y0
-              "y0" (double) double)
-
-  ;;double c_y1(double )
-  (def-function c-y1
-              "y1" (double) double)
-
-  ;;double c_yn(int  ,double )
-  (def-function c-yn
-              "yn" (int double) double)
-
   ;;int c_isnan(double )
   (def-function c-isnan
               "isnan" (double) int)
-
-  ;;double c_acosh(double )
-  (def-function c-acosh
-              "acosh" (double) double)
-
-  ;;double c_asinh(double )
-  (def-function c-asinh
-              "asinh" (double) double)
-
-  ;;double c_atanh(double )
-  (def-function c-atanh
-              "atanh" (double) double)
-
-  ;;double c_cbrt(double )
-  (def-function c-cbrt
-              "cbrt" (double) double)
-
-  ;;double c_expm1(double )
-  (def-function c-expm1
-              "expm1" (double) double)
-
-  ;;int c_ilogb(double )
-  (def-function c-ilogb
-              "ilogb" (double) int)
-
-  ;;double c_log1p(double )
-  (def-function c-log1p
-              "log1p" (double) double)
-
-  ;;double c_logb(double )
-  (def-function c-logb
-              "logb" (double) double)
-
-  ;;double c_nextafter(double  ,double )
-  (def-function c-nextafter
-              "nextafter" (double double) double)
-
-  ;;double c_remainder(double  ,double )
-  (def-function c-remainder
-              "remainder" (double double) double)
-
-  ;;double c_rint(double )
-  (def-function c-rint
-              "rint" (double) double)
-
-  ;;double c_scalb(double  ,double )
-  (def-function c-scalb
-              "scalb" (double double) double)
 
   ;;void c_clearerr(FILE* )
   (def-function c-clearerr
