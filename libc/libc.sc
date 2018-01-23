@@ -1,7 +1,3 @@
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;作者:evilbinary on 2017-09-17 15:15:33.
-;邮箱:rootdebug@163.com
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (library (libc libc)
   (export 
     c-a64l
@@ -126,10 +122,8 @@
     c-freopen
     c-fscanf
     c-fseek
-    c-fseeko
     c-fsetpos
     c-ftell
-    c-ftello
     c-ftrylockfile
     c-funlockfile
     c-fwrite
@@ -163,10 +157,6 @@
     c-tmpfile
     c-tmpnam
     c-ungetc
-    c-vfprintf
-    c-vprintf
-    c-vsnprintf
-    c-vsprintf
     c-memccpy
     c-memchr
     c-memcmp
@@ -201,7 +191,6 @@
     c-rindex
     c-strcasecmp
     c-strncasecmp)
-
   (import (scheme))
       
   (define lib-name
@@ -721,10 +710,6 @@
   (def-function c-fseek
               "fseek" (void* int int) int)
 
-  ;;int c_fseeko(FILE*  ,off_t  ,int )
-  (def-function c-fseeko
-              "fseeko" (void* off_t int) int)
-
   ;;int c_fsetpos(FILE*  ,fpos_t* )
   (def-function c-fsetpos
               "fsetpos" (void* void*) int)
@@ -732,10 +717,6 @@
   ;;long c_ftell(FILE* )
   (def-function c-ftell
               "ftell" (void*) int)
-
-  ;;off_t c_ftello(FILE* )
-  (def-function c-ftello
-              "ftello" (void*) off_t)
 
   ;;int c_ftrylockfile(FILE* )
   (def-function c-ftrylockfile
@@ -868,22 +849,6 @@
   ;;int c_ungetc(int  ,FILE* )
   (def-function c-ungetc
               "ungetc" (int void*) int)
-
-  ;;int c_vfprintf(FILE*  ,char*  ,va_list )
-  (def-function c-vfprintf
-              "vfprintf" (void* string va_list) int)
-
-  ;;int c_vprintf(char*  ,va_list )
-  (def-function c-vprintf
-              "vprintf" (string va_list) int)
-
-  ;;int c_vsnprintf(char*  ,size_t  ,char*  ,va_list )
-  (def-function c-vsnprintf
-              "vsnprintf" (string int string va_list) int)
-
-  ;;int c_vsprintf(char*  ,char*  ,va_list )
-  (def-function c-vsprintf
-              "vsprintf" (string string va_list) int)
 
   ;;void* c_memccpy(void*  ,void*  ,int  ,size_t )
   (def-function c-memccpy
