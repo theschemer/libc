@@ -165,7 +165,13 @@
     c-index
     c-rindex
     c-strcasecmp
-    c-strncasecmp)
+    c-strncasecmp
+    c-inet-addr
+    c-htons
+    ;; ftype
+    in-addr
+    sockaddr-in
+    socklen-t)
   (import (scheme))
       
   (define lib-name
@@ -861,4 +867,22 @@
   (def-function c-strncasecmp
               "strncasecmp" (string string int) int)
 
+  (def-function c-inet-addr
+    "inet_addr" (string) unsigned-long)
+
+  (def-function c-htons
+    "htons" (unsigned-short) unsigned-short) 
+  
+  (define-ftype in-addr
+    (struct
+      (s-addr unsigned-int)))
+  
+  (define-ftype sockaddr-in
+    (struct 
+      (sin-family short)
+      (sin-port unsigned-short)
+      (sin-addr in-addr)
+      (sin-zero (array 8 unsigned-8))))
+  
+  (define-ftype socklen-t int)
 )
