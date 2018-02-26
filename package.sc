@@ -1,5 +1,5 @@
 (("name" . "libc")
-("version" . "0.1.1")
+("version" . "0.1.2")
 ("description" . "scheme bindings for libc")
 ("keywords")
 ("author" 

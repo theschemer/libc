@@ -577,7 +577,7 @@
 
   ;;size_t fread(void*, size_t, size_t, FILE*)
   (def-function c-fread
-              "fread" (void* int int void*) int)
+              "fread" (u8* int int void*) size_t)
 
   ;;FILE* c_freopen(char*, char*, FILE*)
   (def-function c-freopen
@@ -609,7 +609,7 @@
 
   ;;size_t c_fwrite(void*, size_t, size_t, FILE*)
   (def-function c-fwrite
-              "fwrite" (void* int int void*) int)
+              "fwrite" (u8* int int void*) size_t)
 
   ;;int c_getc(FILE*)
   (def-function c-getc
